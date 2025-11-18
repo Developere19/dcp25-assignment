@@ -4,7 +4,7 @@
 
 import os 
 import sqlite3
-# sqlite for connecting to sqlite databases
+# sqlite for connecting to sqlite database
 
 # An example of how to create a table, insert data
 # and run a select query
