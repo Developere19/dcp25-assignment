@@ -24,7 +24,7 @@ class ABCparser:
         conn.commit()
         conn.close()
 
-        def process_books(self) -> int:
+    def process_books(self) -> int:
                 total_tunes = 0
                 print(" Processing ABC Files...")
                 print("─" * 40)
@@ -40,3 +40,17 @@ class ABCparser:
                 print("─" * 40)
                 print(f" Total: {total_tunes} tunes stored")
                 return total_tunes
+        
+
+    def _process_book(self, dir_path: str, book_num: int) -> int:
+        tunes_count = 0
+        for file in os.listdir(dir_path):
+            if file.endswith('.abc'):
+                file_path = os.path.join(dir_path, file)
+                tunes = self._parse_file(file_path, book_num)
+                tunes_count += len(tunes)
+                for tune in tunes:
+                    self._store_tune(tune)
+        return tunes_count
+        
+        
