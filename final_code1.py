@@ -57,4 +57,17 @@ def parse_abc_file(path, book_number):
             notation = []
             num = ''.join(ch for ch in line[2:] if ch.isdigit())
             tune["tune_id"] = int(num) if num else 0
-            
+        
+
+        elif line.startswith("T:"):
+            tune["title"] = line[2:]
+        elif line.startswith("C:"):
+            tune["composer"] = line[2:]
+        elif line.startswith("M:"):
+            tune["meter"] = line[2:]
+        elif line.startswith("K:"):
+            tune["key"] = line[2:]
+        elif line.startswith("R:"):
+            tune["rhythm"] = line[2:]
+        elif line and not line.startswith("%"):
+            notation.append(line)
