@@ -45,3 +45,15 @@ def parse_abc_file(path, book_number):
     except:
         with open(path, "r", encoding="latin-1") as f:
             lines = [ln.strip() for ln in f.readlines()]
+
+    for line in lines:
+        if line.startswith("X:"):
+            if tune.get("title"):
+                tune["abc_notation"] = "\n".join(notation)
+                tune["book_number"] = book_number
+                tunes.append(tune)
+
+            tune = {}
+            notation = []
+            num = ''.join(ch for ch in line[2:] if ch.isdigit())
+            tune["tune_id"] = int(num) if num else         
