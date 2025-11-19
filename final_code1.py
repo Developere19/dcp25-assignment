@@ -27,3 +27,21 @@ def init_db():
     """)
     conn.commit()
     conn.close()
+
+
+# -------------------------------------------------
+# PART 1: ABC FILE PARSING
+# -------------------------------------------------
+
+def parse_abc_file(path, book_number):
+    """Parse all tunes in one .abc file."""
+    tunes = []
+    tune = {}
+    notation = []
+
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            lines = [ln.strip() for ln in f.readlines()]
+    except:
+        with open(path, "r", encoding="latin-1") as f:
+            lines = [ln.strip() for ln in f.readlines()]
