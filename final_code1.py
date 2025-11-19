@@ -56,4 +56,5 @@ def parse_abc_file(path, book_number):
             tune = {}
             notation = []
             num = ''.join(ch for ch in line[2:] if ch.isdigit())
-            tune["tune_id"] = int(num) if num else         
+            tune["tune_id"] = int(num) if num else 0
+            
