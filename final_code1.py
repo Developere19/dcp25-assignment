@@ -78,3 +78,25 @@ def parse_abc_file(path, book_number):
         tunes.append(tune)
 
     return tunes
+
+
+def store_tune(tune):
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+
+    cur.execute("""
+        INSERT INTO tunes VALUES
+        (NULL, ?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        tune.get("tune_id", 0),
+        tune.get("title", ""),
+        tune.get("composer", ""),
+        tune.get("meter", ""),
+        tune.get("key", ""),
+        tune.get("rhythm", ""),
+        tune.get("book_number", 0),
+        tune.get("abc_notation", "")
+    )
+
+    conn.commit()
+    conn.close()
