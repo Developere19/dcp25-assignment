@@ -155,3 +155,26 @@ def get_tunes_by_composer(df, composer):
     return df[df["composer"].str.contains(composer, case=False, na=False)]
 
 # PART 3: BETTER INTERACTIVE MENU UI
+
+
+def print_header():
+    print("\n" + "=" * 60)
+    print("                   ABC TUNE DATABASE SYSTEM")
+    print("=" * 60)
+
+def print_menu():
+    print("\n" + "-" * 60)
+    print("                     MAIN MENU")
+    print("-" * 60)
+    print(" [1]  Search tunes by title")
+    print(" [2]  Get tunes by book number")
+    print(" [3]  Get tunes by rhythm type")
+    print(" [4]  Load ABC files into database")
+    print(" [5]  View dataframe summary")
+    print(" [6]  Exit")
+    print("-" * 60)
+
+def print_box(title):
+    print("\n" + "-" * 60)
+    print(f" {title}")
+    print("-" * 60)
