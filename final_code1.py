@@ -96,7 +96,7 @@ def store_tune(tune):
         tune.get("rhythm", ""),
         tune.get("book_number", 0),
         tune.get("abc_notation", "")
-    )
+    ))
 
     conn.commit()
     conn.close()
