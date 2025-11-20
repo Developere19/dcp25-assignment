@@ -153,3 +153,5 @@ def search_tunes(df, term):
 
 def get_tunes_by_composer(df, composer):
     return df[df["composer"].str.contains(composer, case=False, na=False)]
+
+# PART 3: BETTER INTERACTIVE MENU UI
