@@ -132,3 +132,24 @@ def process_all_books():
 
 
 # PART 2: PANDAS DATA LOADING + ANALYSIS
+def load_data():
+    conn = sqlite3.connect(db_path)
+    df = pd.read_sql("SELECT * FROM tunes", conn)
+    conn.close()
+    return df
+
+
+def get_tunes_by_book(df, book_number):
+    return df[df["book_number"] == book_number]
+
+
+def get_tunes_by_type(df, tune_type):
+    return df[df["rhythm"].str.contains(tune_type, case=False, na=False)]
+
+
+def search_tunes(df, term):
+    return df[df["title"].str.contains(term, case=False, na=False)]
+
+
+def get_tunes_by_composer(df, composer):
+    return df[df["composer"].str.contains(composer, case=False, na=False)]
