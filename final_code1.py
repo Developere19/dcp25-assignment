@@ -100,3 +100,9 @@ def store_tune(tune):
 
     conn.commit()
     conn.close()
+
+
+# -------------------------------------------------
+# PART 1: RECURSIVE DIRECTORY TRAVERSAL
+# -------------------------------------------------
+
