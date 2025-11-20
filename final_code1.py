@@ -5,9 +5,9 @@ import pandas as pd
 books_dir = "abc_books"
 db_path = "tunes.db"
 
-# -------------------------------------------------
+
 # PART 1: DATABASE SETUP
-# -------------------------------------------------
+
 
 def init_db():
     conn = sqlite3.connect(db_path)
@@ -29,9 +29,9 @@ def init_db():
     conn.close()
 
 
-# -------------------------------------------------
+
 # PART 1: ABC FILE PARSING
-# -------------------------------------------------
+
 
 def parse_abc_file(path, book_number):
     """Parse all tunes in one .abc file."""
@@ -102,9 +102,9 @@ def store_tune(tune):
     conn.close()
 
 
-# -------------------------------------------------
+
 # PART 1: RECURSIVE DIRECTORY TRAVERSAL
-# -------------------------------------------------
+
 
 def process_all_books():
     """Recursively scan abc_books/, parse abc files, insert into DB."""
@@ -129,3 +129,6 @@ def process_all_books():
                     print(f"   {f}: {len(tunes)} tune(s)")
 
     print("\nTotal tunes stored:", total)
+
+
+# PART 2: PANDAS DATA LOADING + ANALYSIS
