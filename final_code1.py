@@ -71,3 +71,10 @@ def parse_abc_file(path, book_number):
             tune["rhythm"] = line[2:]
         elif line and not line.startswith("%"):
             notation.append(line)
+    
+    if tune.get("title"):
+        tune["abc_notation"] = "\n".join(notation)
+        tune["book_number"] = book_number
+        tunes.append(tune)
+
+    return tunes
