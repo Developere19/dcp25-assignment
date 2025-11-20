@@ -111,7 +111,7 @@ def process_all_books():
     print("\nScanning and processing ABC files...\n")
     total = 0
 
-    for root, dirs, files in os.walk(books_dir)
+    for root, dirs, files in os.walk(books_dir):
         folder = os.path.basename(root)
 
         if folder.isdigit():
@@ -121,11 +121,11 @@ def process_all_books():
             for f in files:
                 if f.endswith(".abc"):
                     fp = os.path.join(root, f)
-                    tunes = parse_abc_file(fp, book_nums)
+                    tunes = parse_abc_file(fp, book_num)
                     for t in tunes:
                         store_tune(t)
 
                     total += len(tunes)
-                    print(f"   {f}: {len(tuned)} tune(s)")
+                    print(f"   {f}: {len(tunes)} tune(s)")
 
     print("\nTotal tunes stored:", total)
