@@ -189,3 +189,7 @@ def run_menu():
     except:
         df = pd.DataFrame()
         print(" No existing data found. Use option 4 to load ABC files.")
+    
+    while True:
+        print_menu()
+        choice = input(" Enter choice (1-6): ").strip()
