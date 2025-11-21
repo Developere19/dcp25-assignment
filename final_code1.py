@@ -178,3 +178,7 @@ def print_box(title):
     print("\n" + "-" * 60)
     print(f" {title}")
     print("-" * 60)
+    
+def run_menu():
+    init_db()
+    print_header()
