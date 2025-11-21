@@ -218,3 +218,10 @@ def run_menu():
             typ = input(" Enter rhythm type (e.g., jig, reel): ")
             result = get_tunes_by_type(df, typ)
             print("\n", result)
+
+        # Option 4
+        elif choice == "4":
+            print_box("Processing ABC Files...")
+            process_all_books()
+            df = load_data()
+            print(" Reload complete.")
