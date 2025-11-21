@@ -225,3 +225,11 @@ def run_menu():
             process_all_books()
             df = load_data()
             print(" Reload complete.")
+        
+        # Option 5
+        elif choice == "5":
+            print_box("Data Summary")
+            if not df.empty:
+                print(df.describe(include="all"))
+            else:
+                print(" No data loaded.")
