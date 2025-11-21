@@ -199,4 +199,4 @@ def run_menu():
             print_box("Search Tunes by Title")
             term = input(" Enter search term: ")
             result = search_tunes(df, term)
-            print("\n" result)
+            print("\n", result)
