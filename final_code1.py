@@ -200,3 +200,21 @@ def run_menu():
             term = input(" Enter search term: ")
             result = search_tunes(df, term)
             print("\n", result)
+
+        
+        # Option 2
+        elif choice == "2":
+            print_box("Search by Book")
+            try:
+                book = int(input(" Enter book number: "))
+                result = get_tunes_by_book(df, book)
+                print("\n", result)
+            except:
+                print(" Invalid number.")
+
+        # Option 3
+        elif choice == "3":
+            print_box("Search by Rhythm Type")
+            typ = input(" Enter rhythm type (e.g., jig, reel): ")
+            result = get_tunes_by_type(df, typ)
+            print("\n", result)
