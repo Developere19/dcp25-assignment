@@ -12,6 +12,10 @@ db_path = "tunes.db"
 def init_db():
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
+
+    # FORCE recreation of table to avoid schema mismatch
+    cur.execute("DROP TABLE IF EXISTS tunes")
+
     cur.execute("""
         CREATE TABLE IF NOT EXISTS tunes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
