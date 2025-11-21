@@ -188,4 +188,4 @@ def run_menu():
         print(f" Loaded {len(df)} tunes from the database.")
     except:
         df = pd.DataFrame()
-        print(" No existing data found. Use option 4 to load ABC files."))
+        print(" No existing data found. Use option 4 to load ABC files.")
