@@ -233,3 +233,8 @@ def run_menu():
                 print(df.describe(include="all"))
             else:
                 print(" No data loaded.")
+
+        # Exit
+        elif choice == "6":
+            print("\nExiting program. Goodbye!\n")
+            break
