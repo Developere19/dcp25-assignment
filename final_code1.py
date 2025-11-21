@@ -242,3 +242,10 @@ def run_menu():
         # Invalid option
         else:
             print(" Invalid option. Please choose from 1 to 6.")
+
+
+
+
+# Run the menu only when this file is executed directly
+if __name__ == "__main__":
+    run_menu()
