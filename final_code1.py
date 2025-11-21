@@ -238,3 +238,7 @@ def run_menu():
         elif choice == "6":
             print("\nExiting program. Goodbye!\n")
             break
+
+        # Invalid option
+        else:
+            print(" Invalid option. Please choose from 1 to 6.")
