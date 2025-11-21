@@ -182,3 +182,10 @@ def print_box(title):
 def run_menu():
     init_db()
     print_header()
+
+    try:
+        df = load_data()
+        print(f" Loaded {len(df)} tunes from the database.")
+    except:
+        df = pd.DataFrame()
+        print(" No existing data found. Use option 4 to load ABC files."))
