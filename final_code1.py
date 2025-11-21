@@ -193,3 +193,10 @@ def run_menu():
     while True:
         print_menu()
         choice = input(" Enter choice (1-6): ").strip()
+
+        # Option 1
+        if choice == "1":
+            print_box("Search Tunes by Title")
+            term = input(" Enter search term: ")
+            result = search_tunes(df, term)
+            print("\n" result)
