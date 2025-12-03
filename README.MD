@@ -7,7 +7,7 @@ Name: Hamza Zeeshan
 Student Number: C24333116
 
 # Screenshots
-
+![run script](image.png)
 # Description of the project
 The ABC Tune Database System is (written in python) to manage and search collections of traditional music in ABC notation format. It provides an effective approach towards the organization, storage, and querying of large libraries of folk tunes, jigs, reels, and other similar traditional music pieces.
 
