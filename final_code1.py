@@ -3,7 +3,7 @@ import sqlite3
 import pandas as pd
 
 books_dir = "abc_books"
-db_path = "tunes.db"
+db_path = "tunes fix.db"
 
 
 # PART 1: DATABASE SETUP
@@ -14,7 +14,7 @@ def init_db():
     cur = conn.cursor()
 
     # FORCE recreation of table to avoid schema mismatch
-    cur.execute("DROP TABLE IF EXISTS tunes")
+    #cur.execute("DROP TABLE IF EXISTS tunes")
 
     cur.execute("""
         CREATE TABLE IF NOT EXISTS tunes (
