@@ -43,6 +43,7 @@ def parse_abc_file(path, book_number):
     tune = {}
     notation = []
 
+    #Try UTF-8 encoding first, fall back to latin-1 if needed
     try:
         with open(path, "r", encoding="utf-8") as f:
             lines = [ln.strip() for ln in f.readlines()]
@@ -50,19 +51,25 @@ def parse_abc_file(path, book_number):
         with open(path, "r", encoding="latin-1") as f:
             lines = [ln.strip() for ln in f.readlines()]
 
+    # Process each line of the ABC file
     for line in lines:
+        # X: marks the start of a new tune
         if line.startswith("X:"):
+            # Save the previous tune if it exists
             if tune.get("title"):
                 tune["abc_notation"] = "\n".join(notation)
                 tune["book_number"] = book_number
                 tunes.append(tune)
 
+            # Start a new tune
             tune = {}
             notation = []
+            # Extract numeric tune ID from X: line
             num = ''.join(ch for ch in line[2:] if ch.isdigit())
             tune["tune_id"] = int(num) if num else 0
         
 
+        # Parse metadata headers
         elif line.startswith("T:"):
             tune["title"] = line[2:]
         elif line.startswith("C:"):
@@ -73,9 +80,10 @@ def parse_abc_file(path, book_number):
             tune["key"] = line[2:]
         elif line.startswith("R:"):
             tune["rhythm"] = line[2:]
+        # Collect actual music notation (non-empty, non-comment lines)
         elif line and not line.startswith("%"):
             notation.append(line)
-    
+    # Don't forget to save the last tune in the file
     if tune.get("title"):
         tune["abc_notation"] = "\n".join(notation)
         tune["book_number"] = book_number
@@ -115,17 +123,21 @@ def process_all_books():
     print("\nScanning and processing ABC files...\n")
     total = 0
 
+    # Walk through all directories and files
     for root, dirs, files in os.walk(books_dir):
         folder = os.path.basename(root)
 
+        # Look for folders named with numbers (book numbers)
         if folder.isdigit():
             book_num = int(folder)
             print(f" Book {book_num}")
 
+            # Process all .abc files in this book folder
             for f in files:
                 if f.endswith(".abc"):
                     fp = os.path.join(root, f)
                     tunes = parse_abc_file(fp, book_num)
+                    # Store each tune in the database
                     for t in tunes:
                         store_tune(t)
 
@@ -144,18 +156,22 @@ def load_data():
 
 
 def get_tunes_by_book(df, book_number):
+    #Filter tunes by book number.
     return df[df["book_number"] == book_number]
 
 
 def get_tunes_by_type(df, tune_type):
+    #Filter tunes by rhythm type (case-insensitive partial match).
     return df[df["rhythm"].str.contains(tune_type, case=False, na=False)]
 
 
 def search_tunes(df, term):
+    #Search for tunes by title (case-insensitive partial match).
     return df[df["title"].str.contains(term, case=False, na=False)]
 
 
 def get_tunes_by_composer(df, composer):
+    #Filter tunes by composer name (case-insensitive partial match).
     return df[df["composer"].str.contains(composer, case=False, na=False)]
 
 # PART 3: BETTER INTERACTIVE MENU UI
@@ -184,21 +200,23 @@ def print_box(title):
     print("-" * 60)
     
 def run_menu():
+    #handles user interaction and menu navigation. Initializes database, loads existing data, and processes user choices.
     init_db()
     print_header()
 
+    # Try to load existing data from database
     try:
         df = load_data()
         print(f" Loaded {len(df)} tunes from the database.")
     except:
         df = pd.DataFrame()
         print(" No existing data found. Use option 4 to load ABC files.")
-    
+    # Main menu loop
     while True:
         print_menu()
         choice = input(" Enter choice (1-6): ").strip()
 
-        # Option 1
+        # Option 1: Search by title
         if choice == "1":
             print_box("Search Tunes by Title")
             term = input(" Enter search term: ")
@@ -206,7 +224,7 @@ def run_menu():
             print("\n", result)
 
         
-        # Option 2
+        # Option 2: Filter by book number
         elif choice == "2":
             print_box("Search by Book")
             try:
@@ -216,21 +234,21 @@ def run_menu():
             except:
                 print(" Invalid number.")
 
-        # Option 3
+        # Option 3: Filter by rhythm type
         elif choice == "3":
             print_box("Search by Rhythm Type")
             typ = input(" Enter rhythm type (e.g., jig, reel): ")
             result = get_tunes_by_type(df, typ)
             print("\n", result)
 
-        # Option 4
+        # Option 4: Process and load ABC files from disk
         elif choice == "4":
             print_box("Processing ABC Files...")
             process_all_books()
             df = load_data()
             print(" Reload complete.")
         
-        # Option 5
+        # Option 5: Display statistical summary of data
         elif choice == "5":
             print_box("Data Summary")
             if not df.empty:
@@ -238,12 +256,12 @@ def run_menu():
             else:
                 print(" No data loaded.")
 
-        # Exit
+        # Exit program
         elif choice == "6":
             print("\nExiting program. Goodbye!\n")
             break
 
-        # Invalid option
+        # Handle invalid menu choices
         else:
             print(" Invalid option. Please choose from 1 to 6.")
 
