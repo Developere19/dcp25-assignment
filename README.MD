@@ -25,9 +25,6 @@ The ABC Tune Database System is a program that takes music files written in ABC 
 | final_code1.py | Self Written |
 | tunes.db | given |
 
-# References
-* Item 1
-* Item 2
 
 # What I am most proud of in the assignment
 
@@ -37,73 +34,3 @@ I am most proud of creating a fully working database application from scratch. T
 
 Through this project, I learned how to work with SQLite databases to store and retrieve data efficiently, and how to use Pandas for searching and filtering information. I gained experience in reading and parsing text files, navigating folder structures programmatically, and handling different file encodings. I also learned the importance of creating clear user interfaces with proper error handling so the program doesn't crash when users make mistakes. Most importantly, I learned how to combine different programming concepts - file operations, databases, data analysis, and user interaction - into one complete working system, which taught me how real applications are built and structured.
 
-## Below is how to use Markdown. You can delete this:
-
-## This is how to markdown text:
-
-This is *emphasis*
-
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
-
-This is a youtube video:
-
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-
-|Some stuff | Some more stuff in this column |
